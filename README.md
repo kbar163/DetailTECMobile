@@ -1,4 +1,4 @@
-# DetailTECMobile
+
 # DetailTECMobile
 
 ## Requisitos para ejecutar el proyecto
