@@ -11,7 +11,7 @@ namespace DetailTECMobile
         public App()
         {
             InitializeComponent();
-            MainPage = new AppShell();
+            MainPage = new LoginView();
         }
 
         protected override void OnStart()
