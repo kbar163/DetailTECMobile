@@ -1,21 +1,23 @@
-﻿using MvvmHelpers.Commands;
+﻿using DetailTECMobile.Data;
+using MvvmHelpers.Commands;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows.Input;
 using Xamarin.CommunityToolkit.ObjectModel.Internals;
 using Xamarin.Forms;
+using SQLite;
 
 namespace DetailTECMobile.ViewModels
 {
+    //Maneja la logica de navegacion y enventos de la vista de login, hereda la clase BaseViewModel, la cual implementa la interfaz de manejo de notificaciones de
+    //cambio de contenido dentro de Xamarin.
     public class LoginViewModel : BaseViewModel
     {
 
         #region Attributes
-
         private string userName;
         private string userPassword;
-
         #endregion
 
         #region Properties
@@ -40,15 +42,27 @@ namespace DetailTECMobile.ViewModels
         #region Methods
         private void Login()
         {
-            if(UserName.ToString() == "email@gmail.com"
-               && UserPassword.ToString() == "password")
+            var customer = App.Database.GetCustomer(UserName);
+            if(customer.Count != 0)
             {
-                Application.Current.MainPage.DisplayAlert("Status", "Logged in", "Ok");
+                if (UserName.ToString() == customer[0].usuario
+                && UserPassword.ToString() == customer[0].password_cliente)
+                {
+                    
+                    App.loggedUser = customer[0];
+                    App.Current.MainPage = new AppShell();
+                    
+                }
+                else
+                {
+                    Application.Current.MainPage.DisplayAlert("Atencion", "La contraseña ingresada es incorrecta", "Ok");
+                }
             }
             else
             {
-                Application.Current.MainPage.DisplayAlert("Status", "Try again", "Ok");
+                Application.Current.MainPage.DisplayAlert("Atencion", "El nombre de usuario es incorrecto", "Ok");
             }
+            
         }
         #endregion
 

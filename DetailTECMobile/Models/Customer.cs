@@ -1,9 +1,11 @@
-﻿using System;
+﻿using SQLite;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace DetailTECMobile.Models
-{
+{   //Modelo de datos de cliente
+    //usado para la gestion de clientes en la solucion.
     public class Customer
     {
         public string cedula_cliente { get; set; }

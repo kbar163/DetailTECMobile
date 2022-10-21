@@ -10,9 +10,9 @@ using Xamarin.Forms.Xaml;
 namespace DetailTECMobile.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class GenericPage : ContentPage
+    public partial class CustomerView : ContentPage
     {
-        public GenericPage()
+        public CustomerView()
         {
             InitializeComponent();
         }
