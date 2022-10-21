@@ -45,6 +45,17 @@ NOTA: El build puede durar varios minutos, dependiendo de su equipo. El proyecto
 
 ![image](https://user-images.githubusercontent.com/25675816/196603608-8ad908f5-54dc-42f2-9535-b509c30b4c65.png)
 
+Debe de descargar los nuggets o paquetes que se utilizan en el proyecto, es importante que habilite esta paqueteria para toda la solucion, haciendo click derecho sobre la misma y seleccionando Manage Nuget Package for Solution:
+
+![image](https://user-images.githubusercontent.com/25675816/197143977-38eeee47-929a-424d-a304-662843fca72a.png)
+
+
+Busque los siguientes paquetes por nombre:
+[MvvmHelpers](https://www.nuget.org/packages/Refractored.MvvmHelpers/1.6.2/)
+[SQLite-net-pcl](https://www.nuget.org/packages/sqlite-net-pcl/1.8.116)
+[Xamarin Community Toolkit](https://www.nuget.org/packages/Xamarin.CommunityToolkit/2.0.5/)
+
+
 PARA USUARIOS DE WINDOWS:
 
 Si al tratar de ejecutar el proyecto, el emulador de Android sale con una pantalla en negro y al presionar el boton de encendido no hay cambios, asegurese que HyperV este habilitado en su sistema, para mas informacion sobre esto visite los siguientes enlaces:
