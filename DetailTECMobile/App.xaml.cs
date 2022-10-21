@@ -36,6 +36,8 @@ namespace DetailTECMobile
         protected override void OnStart()
         {
             Database.CreateCustomerTable();
+            Database.CreateAddressTable();
+            Database.CreatePhoneTable();
         }
 
         protected override void OnSleep()

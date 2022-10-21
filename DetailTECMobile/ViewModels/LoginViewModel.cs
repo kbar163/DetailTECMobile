@@ -42,26 +42,35 @@ namespace DetailTECMobile.ViewModels
         #region Methods
         private void Login()
         {
+            
             var customer = App.Database.GetCustomer(UserName);
-            if(customer.Count != 0)
+            if(customer != null)
             {
-                if (UserName.ToString() == customer[0].usuario
-                && UserPassword.ToString() == customer[0].password_cliente)
+                if (customer.usuario != null && customer.usuario == UserName.ToString())
                 {
-                    
-                    App.loggedUser = customer[0];
-                    App.Current.MainPage = new AppShell();
-                    
+                    if (UserPassword.ToString() == customer.password_cliente)
+                    {
+
+                        App.loggedUser = customer;
+                        App.Current.MainPage = new AppShell();
+                        Console.WriteLine(customer.telefonos[0]);
+
+                    }
+                    else
+                    {
+                        Application.Current.MainPage.DisplayAlert("Atencion", "La contraseña ingresada es incorrecta", "Ok");
+                    }
                 }
                 else
                 {
-                    Application.Current.MainPage.DisplayAlert("Atencion", "La contraseña ingresada es incorrecta", "Ok");
+                    Application.Current.MainPage.DisplayAlert("Atencion", "El nombre de usuario es incorrecto", "Ok");
                 }
             }
             else
             {
-                Application.Current.MainPage.DisplayAlert("Atencion", "El nombre de usuario es incorrecto", "Ok");
+                Application.Current.MainPage.DisplayAlert("ERROR", "Error al obtener usuario en la base de datos", "Ok");
             }
+            
             
         }
         #endregion
