@@ -7,6 +7,10 @@ using System.Windows.Input;
 using Xamarin.CommunityToolkit.ObjectModel.Internals;
 using Xamarin.Forms;
 using SQLite;
+using System.Net.Http;
+using DetailTECMobile.Services;
+using System.Threading.Tasks;
+using DetailTECMobile.Models;
 
 namespace DetailTECMobile.ViewModels
 {
@@ -18,6 +22,7 @@ namespace DetailTECMobile.ViewModels
         #region Attributes
         private string userName;
         private string userPassword;
+        
         #endregion
 
         #region Properties
@@ -40,35 +45,43 @@ namespace DetailTECMobile.ViewModels
         #endregion
 
         #region Methods
-        private void Login()
+        private async Task Login()
         {
-            
-            var customer = App.Database.GetCustomer(UserName);
+            try
+            {
+                MultivalueCustomer customers = await LoginService.GetAllCustomers();
+                await App.Database.SyncCustomers(customers);
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            var customer = await App.Database.GetCustomer(UserName);
             if(customer != null)
             {
-                if (customer.usuario != null && customer.usuario == UserName.ToString())
+                if (customer.usuario != null && customer.usuario == UserName)
                 {
-                    if (UserPassword.ToString() == customer.password_cliente)
+                    if (UserPassword == customer.password_cliente)
                     {
 
                         App.loggedUser = customer;
                         App.Current.MainPage = new AppShell();
-                        Console.WriteLine(customer.telefonos[0]);
+                        
 
                     }
                     else
                     {
-                        Application.Current.MainPage.DisplayAlert("Atencion", "La contraseña ingresada es incorrecta", "Ok");
+                        await Application.Current.MainPage.DisplayAlert("Atencion", "La contraseña ingresada es incorrecta", "Ok");
                     }
                 }
                 else
                 {
-                    Application.Current.MainPage.DisplayAlert("Atencion", "El nombre de usuario es incorrecto", "Ok");
+                    await Application.Current.MainPage.DisplayAlert("Atencion", "El nombre de usuario es incorrecto", "Ok");
                 }
             }
             else
             {
-                Application.Current.MainPage.DisplayAlert("ERROR", "Error al obtener usuario en la base de datos", "Ok");
+                await Application.Current.MainPage.DisplayAlert("ERROR", "Error al obtener usuario en la base de datos", "Ok");
             }
             
             
@@ -78,7 +91,7 @@ namespace DetailTECMobile.ViewModels
         #region Constructor
         public LoginViewModel()
         {
-            LoginCommand = new MvvmHelpers.Commands.Command(Login);
+            LoginCommand = new MvvmHelpers.Commands.AsyncCommand(Login);
         }
 
         #endregion

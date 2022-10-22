@@ -4,6 +4,7 @@ using SQLite;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace DetailTECMobile.Data
 {   
@@ -23,7 +24,7 @@ namespace DetailTECMobile.Data
         }
 
         #region CRUD CLIENTES
-        public Customer GetCustomer(string userName)
+        public async Task<Customer> GetCustomer(string userName)
         {
             try
             {
@@ -45,7 +46,12 @@ namespace DetailTECMobile.Data
 
                     var phoneQuery = _database.Query<Phone>($@"SELECT CLIENTE_TELEFONO.TELEFONO
                     FROM CLIENTE_TELEFONO WHERE CLIENTE_TELEFONO.CEDULA_CLIENTE = ?", customer.cedula_cliente);
-                    customer.telefonos = phoneQuery;
+
+                    customer.telefonos = new List<string>();
+                    foreach(Phone element in phoneQuery)
+                    {
+                        customer.telefonos.Add(element.telefono);
+                    }
                    
                 }
                 return customer;
@@ -57,12 +63,38 @@ namespace DetailTECMobile.Data
             }
             
         }
+
+        public async Task SyncCustomers(MultivalueCustomer customers)
+        {
+            try
+            {
+                
+                foreach(Customer customer in customers.clientes)
+                {
+                    var check = await GetCustomer(customer.usuario);
+                    if(check != null && check.cedula_cliente == null)
+                    {
+                         _database.Execute(@"INSERT INTO CLIENTE
+                         VALUES 
+                         (? , ? , ? , ? , ? , ? , ? , ?, ? , ?)",
+                         customer.cedula_cliente, customer.nombre,
+                         customer.primer_apellido, customer.segundo_apellido,
+                         customer.correo_cliente, customer.usuario, customer.password_cliente,
+                         customer.puntos_acum, customer.puntos_obt, customer.puntos_redim);
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+        }
         #endregion
 
         #region Creation
         public void CreateCustomerTable()
         {
-           _database.Execute(@"CREATE TABLE IF NOT EXISTS CLIENTE 
+           var table = _database.Execute(@"CREATE TABLE IF NOT EXISTS CLIENTE 
                 (
                 CEDULA_CLIENTE VARCHAR(9) NOT NULL PRIMARY KEY,
                 NOMBRE VARCHAR(20) NOT NULL,
@@ -77,11 +109,13 @@ namespace DetailTECMobile.Data
                 CONSTRAINT UNIQUE_LOGIN UNIQUE(CORREO_CLIENTE, USUARIO)
                 );");
             AddUsers();
+            
+            
         }
 
         public void CreateAddressTable()
         {
-            _database.Execute(@"CREATE TABLE IF NOT EXISTS CLIENTE_DIRECCION 
+            var table = _database.Execute(@"CREATE TABLE IF NOT EXISTS CLIENTE_DIRECCION 
                 (
                 CEDULA_CLIENTE VARCHAR(9) NOT NULL ,
                 PROVINCIA VARCHAR(50) NOT NULL ,
@@ -91,17 +125,19 @@ namespace DetailTECMobile.Data
                 FOREIGN KEY (CEDULA_CLIENTE) REFERENCES CLIENTE(CEDULA_CLIENTE)
                 );");
             AddUserAdress();
+
         }
 
         public void CreatePhoneTable()
         {
-            _database.Execute(@"CREATE TABLE IF NOT EXISTS CLIENTE_TELEFONO 
+            var table = _database.Execute(@"CREATE TABLE IF NOT EXISTS CLIENTE_TELEFONO 
                 (
                 CEDULA_CLIENTE VARCHAR(9) NOT NULL ,
                 TELEFONO VARCHAR(20) NOT NULL,
                 FOREIGN KEY (CEDULA_CLIENTE) REFERENCES CLIENTE(CEDULA_CLIENTE)
                 );");
             AddUserPhones();
+
         }
         #endregion
 
@@ -165,6 +201,8 @@ namespace DetailTECMobile.Data
 
         }
         #endregion
+
+        
 
 
     }

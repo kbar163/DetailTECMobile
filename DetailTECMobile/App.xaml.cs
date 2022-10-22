@@ -3,6 +3,7 @@ using DetailTECMobile.Models;
 using DetailTECMobile.Views;
 using System;
 using System.IO;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -12,6 +13,12 @@ namespace DetailTECMobile
     {
         public static DatabaseContext database;
         public static Customer loggedUser { get; set; }
+
+        public static bool FirstRun
+        {
+            get => Preferences.Get(nameof(FirstRun), true);
+            set => Preferences.Set(nameof(FirstRun), value);
+        }
 
         public static DatabaseContext Database
         {
@@ -35,9 +42,14 @@ namespace DetailTECMobile
 
         protected override void OnStart()
         {
-            Database.CreateCustomerTable();
-            Database.CreateAddressTable();
-            Database.CreatePhoneTable();
+            if(FirstRun)
+            {
+                Database.CreateCustomerTable();
+                Database.CreateAddressTable();
+                Database.CreatePhoneTable();
+                FirstRun = false;
+            }
+            
         }
 
         protected override void OnSleep()

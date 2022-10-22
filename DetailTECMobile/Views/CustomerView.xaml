@@ -1,12 +1,38 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="DetailTECMobile.Views.CustomerView">
-    <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
-    </ContentPage.Content>
+             x:Class="DetailTECMobile.Views.CustomerView"
+             Title="Perfil"
+             >
+    <StackLayout Margin="20">
+        <ScrollView VerticalOptions="FillAndExpand">
+            <StackLayout>
+                <Frame  BackgroundColor="AliceBlue"
+                        CornerRadius="15"
+                        HeightRequest="700"
+                        BorderColor="AliceBlue"
+                        HasShadow="True"
+                        Margin="4.4">
+                    <Grid   RowDefinitions="Auto, Auto, Auto"
+                            ColumnDefinitions="Auto, Auto">
+                        <Label
+                            Grid.Row="0"
+                            Text="ROW 0, COLUMN 0"
+                        />
+                        <Label
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            Text="ROW 0, COLUMN 0"
+                        />
+                        <Label
+                            Grid.Row="1"
+                            Text="ROW 1, COLUMN 0"
+                        />
+                    </Grid>
+
+
+                </Frame>
+            </StackLayout>
+        </ScrollView>
+    </StackLayout>
 </ContentPage>

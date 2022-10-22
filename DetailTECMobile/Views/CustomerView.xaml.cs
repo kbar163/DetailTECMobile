@@ -1,4 +1,6 @@
-﻿using System;
+﻿using DetailTECMobile.Models;
+using DetailTECMobile.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,9 +15,12 @@ namespace DetailTECMobile.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class CustomerView : ContentPage
     {
+       
+        
         public CustomerView()
         {
             InitializeComponent();
+            BindingContext = new CustomerViewModel();
         }
     }
 }

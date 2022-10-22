@@ -19,6 +19,6 @@ namespace DetailTECMobile.Models
         public int puntos_obt { get; set; }
         public int puntos_redim { get; set; }
         public List<Address> direcciones { get; set; }
-        public List<Phone> telefonos { get; set; }
+        public List<string> telefonos { get; set; }
     }
 }
