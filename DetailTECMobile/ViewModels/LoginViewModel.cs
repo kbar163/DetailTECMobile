@@ -63,11 +63,9 @@ namespace DetailTECMobile.ViewModels
                 {
                     if (UserPassword == customer.password_cliente)
                     {
-
                         App.loggedUser = customer;
                         App.Current.MainPage = new AppShell();
                         
-
                     }
                     else
                     {

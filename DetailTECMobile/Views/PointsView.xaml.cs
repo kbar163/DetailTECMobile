@@ -1,5 +1,4 @@
-﻿using DetailTECMobile.Models;
-using DetailTECMobile.ViewModels;
+﻿using DetailTECMobile.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,16 +10,13 @@ using Xamarin.Forms.Xaml;
 
 namespace DetailTECMobile.Views
 {
-    
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class CustomerView : ContentPage
+    public partial class PointsView : ContentPage
     {
-       
-        
-        public CustomerView()
+        public PointsView()
         {
             InitializeComponent();
-            BindingContext = new CustomerViewModel();
+            BindingContext = new PointsViewModel();
         }
     }
 }

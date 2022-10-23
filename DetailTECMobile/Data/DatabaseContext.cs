@@ -109,8 +109,6 @@ namespace DetailTECMobile.Data
                 CONSTRAINT UNIQUE_LOGIN UNIQUE(CORREO_CLIENTE, USUARIO)
                 );");
             AddUsers();
-            
-            
         }
 
         public void CreateAddressTable()
@@ -125,7 +123,6 @@ namespace DetailTECMobile.Data
                 FOREIGN KEY (CEDULA_CLIENTE) REFERENCES CLIENTE(CEDULA_CLIENTE)
                 );");
             AddUserAdress();
-
         }
 
         public void CreatePhoneTable()
@@ -137,7 +134,6 @@ namespace DetailTECMobile.Data
                 FOREIGN KEY (CEDULA_CLIENTE) REFERENCES CLIENTE(CEDULA_CLIENTE)
                 );");
             AddUserPhones();
-
         }
         #endregion
 

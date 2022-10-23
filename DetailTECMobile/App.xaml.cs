@@ -49,7 +49,6 @@ namespace DetailTECMobile
                 Database.CreatePhoneTable();
                 FirstRun = false;
             }
-            
         }
 
         protected override void OnSleep()
