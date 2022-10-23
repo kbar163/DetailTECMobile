@@ -15,7 +15,7 @@ using DetailTECMobile.Models;
 namespace DetailTECMobile.ViewModels
 {
     //Maneja la logica de navegacion y enventos de la vista de login, hereda la clase BaseViewModel, la cual implementa la interfaz de manejo de notificaciones de
-    //cambio de contenido dentro de Xamarin.
+    //cambio de contenido dentro de Xamarin..
     public class LoginViewModel : BaseViewModel
     {
 
