@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DetailTECMobile.Views.LoginView">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label  Text="DetailTEC"
+                    VerticalOptions="StartAndExpand"
+                    HorizontalOptions="CenterAndExpand"
+                    Padding="100"
+                    FontAttributes="Bold"
+                    FontSize="36"
+                    
+             />
+            <Label  Text="Mobile"
+                    VerticalOptions="Start"
+                    HorizontalOptions="CenterAndExpand"
+                    Padding="35"
+                    FontSize="26"
+                    FontAttributes="Bold"
+                    TranslationY="-250"
+                      
+             />
+
+            <Entry
+                VerticalOptions="Center"
+                Placeholder="Usuario"
+                HorizontalTextAlignment="Center"
+                HorizontalOptions="CenterAndExpand"
+                WidthRequest="300"
+                Margin="12"
+                TranslationY="-250"
+                Text="{Binding UserName, Mode=TwoWay}"
+            />
+            <Entry
+                VerticalOptions="Center"
+                Placeholder="Password"
+                IsPassword="True"
+                HorizontalTextAlignment="Center"
+                HorizontalOptions="CenterAndExpand"
+                WidthRequest="300"
+                Margin="12"
+                TranslationY="-250"
+                Text="{Binding UserPassword, Mode=TwoWay}"
+            />
+            <Button
+                VerticalOptions="End"
+                HorizontalOptions="CenterAndExpand"
+                Text="Login"
+                BackgroundColor="DodgerBlue"
+                TextColor="WhiteSmoke"
+                WidthRequest="120"
+                CornerRadius="8"
+                TranslationY="-220"
+                Command="{Binding LoginCommand}"/>
+                
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
