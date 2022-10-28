@@ -25,7 +25,9 @@
                                 FontAttributes="Bold"
                                 FontSize="22"
                                 TranslationY="0"
-                                TranslationX="0"
+                                TranslationX="50"
+                                HorizontalOptions="CenterAndExpand"
+                                Margin="20"
                             />
                             <Label
                                 Grid.Row="1"
