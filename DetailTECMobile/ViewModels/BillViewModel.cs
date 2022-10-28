@@ -5,14 +5,14 @@ using System.Text;
 
 namespace DetailTECMobile.ViewModels
 {
-    public class PointsViewModel : BaseViewModel
+    public class BillViewModel : BaseViewModel
     {
         private Customer user = App.loggedUser;
-        
+
         #region Constructor
-        public PointsViewModel()
+        public BillViewModel()
         {
-            
+
         }
         #endregion
 

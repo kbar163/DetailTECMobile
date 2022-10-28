@@ -1,0 +1,131 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:viewmodels="clr-namespace:DetailTECMobile.ViewModels" x:DataType="viewmodels:AppointmentViewModel"
+             x:Class="DetailTECMobile.Views.AppointmentView">
+    <ContentPage.Content>
+        <StackLayout Margin="20">
+            <ScrollView VerticalOptions="FillAndExpand">
+                <StackLayout>
+                    <Frame  BackgroundColor="AliceBlue"
+                            CornerRadius="15"
+                            HeightRequest="550"
+                            BorderColor="AliceBlue"
+                            HasShadow="True"
+                            HorizontalOptions="Center"
+                            VerticalOptions="Center"
+                            
+                            
+                            Margin="4.4">
+                        <Grid   RowDefinitions="Auto, Auto, Auto,
+                                            Auto, Auto, Auto,
+                                            Auto, Auto, Auto,
+                                            Auto, Auto, Auto,
+                                            Auto, Auto, Auto"
+                            ColumnDefinitions="Auto, Auto, Auto">
+
+                            <Label
+                                Grid.Row="0"
+                                Grid.ColumnSpan="2"
+                                Text="Agendar una cita"
+                                FontAttributes="Bold"
+                                FontSize="22"
+                                TranslationY="0"
+                                TranslationX="0"
+                            />
+                            <Label
+                                Grid.Row="1"
+                                Grid.ColumnSpan="2"
+                                Text="Seleccione la fecha y hora en la que desea su cita de lavado "
+                                FontSize="18"
+                                TranslationY="15"
+                                TranslationX="0"
+                            />
+                            <Picker 
+                                Title="Fechas disponibles"
+                                Grid.Row="2"
+                                Grid.Column="0"
+                                TitleColor="RoyalBlue"
+                                ItemsSource="{Binding Dates}"
+                                HorizontalOptions="CenterAndExpand"
+                                WidthRequest="190"
+                                TranslationX="62"
+                                TranslationY="20"
+                                HorizontalTextAlignment="center"
+                                SelectedItem="{Binding SelectedDate}"
+                                />
+                            <Picker 
+                               
+                                Title="Horarios"
+                                Grid.Row="3"
+                                Grid.ColumnSpan="2"
+                                TitleColor="RoyalBlue"
+                                ItemsSource="{Binding AllTimes, Mode=TwoWay}"
+                                HorizontalOptions="CenterAndExpand"
+                                WidthRequest="190"
+                                TranslationY="20"
+                                HorizontalTextAlignment="center"
+                                SelectedItem="{Binding SelectedTime}"
+                                />
+                            <Label
+                                Grid.Row="4"
+                                Grid.ColumnSpan="2"
+                                Text="Seleccione el tipo de lavado que desea"
+                                FontSize="18"
+                                TranslationY="30"
+                                TranslationX="0"
+                            />
+                            <Picker 
+                                Title="Lavados disponibles"
+                                Grid.Row="5"
+                                Grid.ColumnSpan="2"
+                                TitleColor="RoyalBlue"
+                                ItemsSource="{Binding WashTypes, Mode=TwoWay}"
+                                ItemDisplayBinding="{Binding nombre_lavado}"
+                                SelectedItem="{Binding SelectedWash}"
+                                HorizontalOptions="CenterAndExpand"
+                                WidthRequest="190"
+                                TranslationY="30"
+                                HorizontalTextAlignment="center"
+                                />
+                            <Label
+                                Grid.Row="6"
+                                Grid.ColumnSpan="2"
+                                Text="Ingrese la placa del vehiculo que recibira el servicio"
+                                FontSize="18"
+                                TranslationY="40"
+                                TranslationX="0"
+                            />
+                            <Entry
+                                Grid.Row="7"
+                                Grid.ColumnSpan="2"
+                                PlaceholderColor="RoyalBlue"
+                                VerticalOptions="Center"
+                                Placeholder="Placa vehicular"
+                                HorizontalTextAlignment="Center"
+                                HorizontalOptions="CenterAndExpand"
+                                WidthRequest="200"
+                                TranslationY="40"
+                                Text="{Binding Placa, Mode=TwoWay}"
+                                
+                            />
+                            <Button
+                                Grid.Row="12"
+                                Grid.Column="0"
+                                Text="Confirmar fecha"
+                                FontSize="Header"
+                                BackgroundColor="DodgerBlue"
+                                TextColor="WhiteSmoke"
+                                WidthRequest="40"
+                                HeightRequest="40"
+                                CornerRadius="8"
+                                TranslationX="62"
+                                TranslationY="60"
+                                Command="{Binding CheckDateCommand}"
+                            />
+                        </Grid>
+                    </Frame>
+                </StackLayout>
+            </ScrollView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

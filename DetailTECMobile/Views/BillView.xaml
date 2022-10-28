@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="DetailTECMobile.Views.PointsView">
+             x:Class="DetailTECMobile.Views.BillView">
     <ContentPage.Content>
         <StackLayout Margin="20">
             <ScrollView VerticalOptions="FillAndExpand">
@@ -17,21 +17,13 @@
                                             Auto, Auto, Auto,
                                             Auto, Auto, Auto"
                             ColumnDefinitions="Auto, Auto, Auto">
-                            
-                            <Label
-                                Grid.Row="0"
-                                Grid.ColumnSpan="2"
-                                Text="Mis puntos"
-                                FontAttributes="Bold"
-                                FontSize="22"
-                                TranslationY="0"
-                                TranslationX="0"
-                            />
-                            <Picker Title="Seleccione una fecha"
-                            TitleColor="Red"
-                            ItemsSource="{Binding Monkeys}"
-                            ItemDisplayBinding="{Binding Name}" />
-
+                            <Picker Title="Seleccione una factura"
+                                    TitleColor="Red"
+                                    ItemsSource="{Binding Monkeys}"
+                                    ItemDisplayBinding="{Binding Id}"
+                                    Grid.Row="0"
+                                    Grid.ColumnSpan="2"/>
+                           
                         </Grid>
                     </Frame>
                 </StackLayout>

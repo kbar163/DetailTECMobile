@@ -105,6 +105,7 @@
                             Placeholder="{Binding CustomerPassword}"
                             IsPassword="True"
                             TranslationY="19"
+                            Text="{Binding NewPassword, Mode=TwoWay}"
                         />
                         <Button
                             Grid.Row="8"
@@ -117,6 +118,7 @@
                             HeightRequest="40"
                             CornerRadius="8"
                             TranslationY="19"
+                            Command="{Binding ChangePasswordCommand}"
                             />
                         <Label
                             Grid.Row="9"
