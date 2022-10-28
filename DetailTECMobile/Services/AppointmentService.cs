@@ -8,36 +8,36 @@ using System.Threading.Tasks;
 
 namespace DetailTECMobile.Services
 {
-    public static class LoginService
+    public static class AppointmentService
     {
         static string BaseURL = "http://10.0.2.2:7163/api/manage/";
         static HttpClient client;
 
-        static LoginService()
+        static AppointmentService()
         {
             client = new HttpClient()
             {
                 BaseAddress = new Uri(BaseURL)
-                
+
             };
             client.Timeout = TimeSpan.FromSeconds(12);
         }
 
-        public static async Task<MultivalueCustomer> GetAllCustomers()
+        public static async Task<MultivalueAppointment> GetAllAppointments()
         {
-            MultivalueCustomer customers = new MultivalueCustomer();
+            MultivalueAppointment appointments = new MultivalueAppointment();
             try
             {
-                var json = await client.GetStringAsync("customer/all");
-  
-                customers = JsonConvert.DeserializeObject<MultivalueCustomer>(json);
+                var json = await client.GetStringAsync("appointment/all");
+
+                appointments = JsonConvert.DeserializeObject<MultivalueAppointment>(json);
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.Message);
+                appointments.exito = false;
             }
-            
-            return customers;
+
+            return appointments;
         }
     }
 }

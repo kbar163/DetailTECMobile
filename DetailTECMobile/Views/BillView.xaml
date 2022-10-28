@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DetailTECMobile.Views.BillView">
+    <ContentPage.Content>
+        <StackLayout Margin="20">
+            <ScrollView VerticalOptions="FillAndExpand">
+                <StackLayout>
+                    <Frame  BackgroundColor="AliceBlue"
+                        CornerRadius="15"
+                        HeightRequest="510"
+                        BorderColor="AliceBlue"
+                        HasShadow="True"
+                        Margin="4.4">
+                        <Grid   RowDefinitions="Auto, Auto, Auto,
+                                            Auto, Auto, Auto,
+                                            Auto, Auto, Auto,
+                                            Auto, Auto, Auto"
+                            ColumnDefinitions="Auto, Auto, Auto">
+                            <Picker Title="Seleccione una factura"
+                                    TitleColor="Red"
+                                    ItemsSource="{Binding Monkeys}"
+                                    ItemDisplayBinding="{Binding Id}"
+                                    Grid.Row="0"
+                                    Grid.ColumnSpan="2"/>
+                           
+                        </Grid>
+                    </Frame>
+                </StackLayout>
+            </ScrollView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

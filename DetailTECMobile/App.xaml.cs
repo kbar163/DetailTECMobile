@@ -1,7 +1,9 @@
 ﻿using DetailTECMobile.Data;
 using DetailTECMobile.Models;
+using DetailTECMobile.Services;
 using DetailTECMobile.Views;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using Xamarin.Essentials;
 using Xamarin.Forms;
@@ -13,6 +15,8 @@ namespace DetailTECMobile
     {
         public static DatabaseContext database;
         public static Customer loggedUser { get; set; }
+        public static List<string> horarios { get; set; }
+        
 
         public static bool FirstRun
         {
@@ -38,15 +42,22 @@ namespace DetailTECMobile
             InitializeComponent();
             MainPage = new LoginView();
             loggedUser = new Customer();
+            horarios = new List<string>();
         }
 
         protected override void OnStart()
         {
+            
             if(FirstRun)
             {
                 Database.CreateCustomerTable();
                 Database.CreateAddressTable();
                 Database.CreatePhoneTable();
+                Database.CreateBillTable();
+                Database.CreateOfficeTable();
+                Database.CreateWashTable();
+                Database.CreateAppointmentTable();
+                Database.CreatePendingAppTable();
                 FirstRun = false;
             }
         }

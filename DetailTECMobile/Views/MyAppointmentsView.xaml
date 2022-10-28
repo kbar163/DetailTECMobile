@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:viewmodels="clr-namespace:DetailTECMobile.ViewModels"
+             x:Class="DetailTECMobile.Views.MyAppointmentsView">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Mis citas pendientes"
+                   VerticalOptions="Start" 
+                   HorizontalOptions="Start"
+                   Margin="20"
+                   FontSize="22"
+                   FontAttributes="Bold"/>
+            <Button
+                VerticalOptions="Start"
+                HorizontalOptions="End"
+                Margin="0,0,20,0"
+                Text="Sync"
+                BackgroundColor="DodgerBlue"
+                TextColor="WhiteSmoke"
+                WidthRequest="120"
+                CornerRadius="8"
+                TranslationY="-60"
+                HeightRequest="40"
+                Command="{Binding SyncCommand}"/>
+            <CollectionView ItemsSource="{Binding PendingAppointments, Mode=TwoWay}"
+                            HeightRequest="700"
+                            Margin="10"
+                            TranslationY="-40"
+                            >
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame  BackgroundColor="AliceBlue"
+                                CornerRadius="15"
+                                HeightRequest="100"
+                                HasShadow="True"
+                                Padding="5"
+                                
+                                BorderColor="CadetBlue"
+                                HorizontalOptions="Center">
+                            <Grid   RowDefinitions="Auto, Auto, Auto, Auto"
+                                    ColumnDefinitions="Auto, Auto"
+                                    HorizontalOptions="Center"
+                                    VerticalOptions="Center"
+                                    WidthRequest="500"
+                                    HeightRequest="100"
+                                >
+                                <Label
+                                    Grid.Row="0"
+                                    Grid.Column="0"
+                                    Text="Tipo de servicio :"
+                                    FontAttributes="Bold"
+                                    TranslationX="70"
+                                />
+                                <Label
+                                    Grid.Row="0"
+                                    Grid.Column="1"
+                                    Text="{Binding nombre_lavado}"
+                                    TranslationX="70"
+                                />
+                                <Label
+                                    Grid.Row="1"
+                                    Grid.Column="0"
+                                    Text="Sucursal :"
+                                    FontAttributes="Bold"
+                                    TranslationX="70"
+                                />
+                                <Label
+                                    Grid.Row="1"
+                                    Grid.Column="1"
+                                    Text="{Binding nombre_sucursal}"
+                                    TranslationX="70"
+                                />
+                                <Label
+                                    Grid.Row="2"
+                                    Grid.Column="0"
+                                    Text="Fecha :"
+                                    FontAttributes="Bold"
+                                    TranslationX="70"
+                                />
+                                <Label
+                                    Grid.Row="2"
+                                    Grid.Column="1"
+                                    Text="{Binding hora}"
+                                    TranslationX="70"
+                                />
+                                <Label
+                                    Grid.Row="3"
+                                    Grid.Column="0"
+                                    Text="Placa vehicular :"
+                                    FontAttributes="Bold"
+                                    TranslationX="70"
+                                />
+                                <Label
+                                    Grid.Row="3"
+                                    Grid.Column="1"
+                                    Text="{Binding placa_vehiculo}"
+                                    TranslationX="70"
+                                />
+                            </Grid>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
