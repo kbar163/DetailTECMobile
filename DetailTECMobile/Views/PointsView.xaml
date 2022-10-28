@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:viewmodels="clr-namespace:DetailTECMobile.ViewModels" x:DataType="viewmodels:PointsViewModel"
              x:Class="DetailTECMobile.Views.PointsView">
     <ContentPage.Content>
         <StackLayout Margin="20">
@@ -17,21 +17,69 @@
                                             Auto, Auto, Auto,
                                             Auto, Auto, Auto"
                             ColumnDefinitions="Auto, Auto, Auto">
-                            
+
                             <Label
                                 Grid.Row="0"
                                 Grid.ColumnSpan="2"
-                                Text="Mis puntos"
+                                Text="Mis Puntos"
+                                FontAttributes="Bold"
+                                FontSize="22"
+                                TranslationY="0"
+                                TranslationX="50"
+                                HorizontalOptions="CenterAndExpand"
+                                Margin="20"
+                            />
+                            <Label
+                                Grid.Row="1"
+                                Grid.ColumnSpan="1"
+                                Text="Puntos Acumulados:"
                                 FontAttributes="Bold"
                                 FontSize="22"
                                 TranslationY="0"
                                 TranslationX="0"
                             />
-                            <Picker Title="Seleccione una fecha"
-                            TitleColor="Red"
-                            ItemsSource="{Binding Monkeys}"
-                            ItemDisplayBinding="{Binding Name}" />
-
+                            <Label
+                                Grid.Row="1"
+                                Grid.Column="2"
+                                Text="{Binding AccumulatedPoints}"
+                                FontSize="22"
+                                TranslationY="0"
+                                TranslationX="0"
+                            />
+                            <Label
+                                Grid.Row="2"
+                                Grid.ColumnSpan="1"
+                                Text="Puntos Obtenidos:"
+                                FontAttributes="Bold"
+                                FontSize="22"
+                                TranslationY="0"
+                                TranslationX="0"
+                            />
+                            <Label
+                                Grid.Row="2"
+                                Grid.Column="2"
+                                Text="{Binding ObtainedPoints}"
+                                FontSize="22"
+                                TranslationY="0"
+                                TranslationX="0"
+                            />
+                            <Label
+                                Grid.Row="3"
+                                Grid.ColumnSpan="1"
+                                Text="Puntos Redimidos:"
+                                FontAttributes="Bold"
+                                FontSize="22"
+                                TranslationY="0"
+                                TranslationX="0"
+                            />
+                            <Label
+                                Grid.Row="3"
+                                Grid.Column="2"
+                                Text="{Binding RedeemedPoints}"
+                                FontSize="22"
+                                TranslationY="0"
+                                TranslationX="0"
+                            />
                         </Grid>
                     </Frame>
                 </StackLayout>
