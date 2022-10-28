@@ -87,10 +87,6 @@
     <FlyoutItem Title="Mis citas" Icon="icon_about.png">
         <ShellContent Route="MyAppointmentsView" ContentTemplate="{DataTemplate local:MyAppointmentsView}" />
     </FlyoutItem>
-    <FlyoutItem Title="Mis Facturas" Icon="icon_about.png">
-        <ShellContent Route="CustomerView" ContentTemplate="{DataTemplate local:CustomerView}" />
-    </FlyoutItem>
-    
     <FlyoutItem Title="Mis Puntos" Icon="icon_about.png">
         <ShellContent Route="PointsView" ContentTemplate="{DataTemplate local:PointsView}" />
     </FlyoutItem>
