@@ -20,6 +20,15 @@
                             
                             <Label
                                 Grid.Row="0"
+                                Grid.ColumnSpan="2"
+                                Text="Mis Puntos"
+                                FontAttributes="Bold"
+                                FontSize="22"
+                                TranslationY="0"
+                                TranslationX="0"
+                            />
+                            <Label
+                                Grid.Row="1"
                                 Grid.ColumnSpan="1"
                                 Text="Puntos Acumulados:"
                                 FontAttributes="Bold"
@@ -28,7 +37,7 @@
                                 TranslationX="0"
                             />
                             <Label
-                                Grid.Row="0"
+                                Grid.Row="1"
                                 Grid.Column="2"
                                 Text="{Binding AccumulatedPoints}"
                                 FontSize="22"
@@ -36,7 +45,7 @@
                                 TranslationX="0"
                             />
                             <Label
-                                Grid.Row="1"
+                                Grid.Row="2"
                                 Grid.ColumnSpan="1"
                                 Text="Puntos Obtenidos:"
                                 FontAttributes="Bold"
@@ -45,7 +54,7 @@
                                 TranslationX="0"
                             />
                             <Label
-                                Grid.Row="1"
+                                Grid.Row="2"
                                 Grid.Column="2"
                                 Text="{Binding ObtainedPoints}"
                                 FontSize="22"
@@ -53,7 +62,7 @@
                                 TranslationX="0"
                             />
                             <Label
-                                Grid.Row="2"
+                                Grid.Row="3"
                                 Grid.ColumnSpan="1"
                                 Text="Puntos Redimidos:"
                                 FontAttributes="Bold"
@@ -62,7 +71,7 @@
                                 TranslationX="0"
                             />
                             <Label
-                                Grid.Row="2"
+                                Grid.Row="3"
                                 Grid.Column="2"
                                 Text="{Binding RedeemedPoints}"
                                 FontSize="22"
